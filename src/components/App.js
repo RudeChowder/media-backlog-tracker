@@ -19,10 +19,10 @@ function App() {
           <MoviesPage />
         </Route>
         <Route path="/games">
-
+          <p>Hello from the games page</p>
         </Route>
         <Route path="/books">
-
+          <p>Hello from the books page</p>
         </Route>
       </Switch>
     </div>
