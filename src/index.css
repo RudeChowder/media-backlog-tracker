@@ -35,6 +35,10 @@ nav a.active {
   flex-direction: column;
 }
 
+.filter {
+  margin: 8px;
+}
+
 .new-movie-link {
   display: inline-block;
   align-self: center;

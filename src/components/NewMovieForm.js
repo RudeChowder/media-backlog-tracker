@@ -28,7 +28,7 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
   return (
     <main>
       <h3>New Movie Form</h3>
-      <p>Enter the info for your new movie</p>
+      <p>Enter the info for the movie you want to watch</p>
       <form className="movie-form" onSubmit={handleSubmitMovieForm}>
         <span>
           <label htmlFor="title">Title: </label>

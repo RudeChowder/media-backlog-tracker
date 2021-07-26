@@ -5,7 +5,6 @@ const MovieCard = ({ movie, onDeleteMovie }) => {
 
   const handleClick = () => {
     const result = window.confirm("Are you sure you'd like to delete this movie?")
-
     if (result) { onDeleteMovie(id) }
   }
 
