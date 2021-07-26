@@ -4,10 +4,12 @@ import { Route, Switch } from "react-router-dom"
 import Filter from "./Filter"
 import MoviesList from "./MoviesList"
 import NewMovieForm from "./NewMovieForm"
+import Sort from "./Sort"
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([])
   const [filter,setFilter] = useState("")
+  const [sort, setSort] = useState("")
   const moviesUrl = "http://localhost:3001/movies"
 
   useEffect(() => {
@@ -54,16 +56,31 @@ const MoviesPage = () => {
   }
 
   const handleChangeFilter = (event) => setFilter(event.target.value)
+  const handleChangeSort = (event) => setSort(event.target.value)
 
-  const filteredMovies = () => movies.filter(movie => {
+  const filteredMovies = movies.filter(movie => {
     return filter === "" ? true : movie.title.toLowerCase().includes(filter.toLowerCase())
   })
+
+  const sortedFilteredMovies = () => {
+    switch (sort) {
+      case "title": 
+      case "genre":
+        return [...filteredMovies].sort(( a, b ) => a[sort].localeCompare(b[sort]))
+      case "runtime":
+      case "year":
+        return [...filteredMovies].sort(( a, b ) => a[sort] - b[sort])
+      default:
+        return filteredMovies
+    }
+  }
 
   return (
     <Switch>
       <Route exact path="/movies">
         <Filter filter={filter} onChangeFilter={handleChangeFilter} />
-        <MoviesList movies={filteredMovies()} onDeleteMovie={handleDeleteMovie} />
+        <Sort sort={sort} onChangeSort={handleChangeSort} />
+        <MoviesList movies={sortedFilteredMovies()} onDeleteMovie={handleDeleteMovie} />
       </Route>
       <Route path="/movies/new">
         <NewMovieForm onSubmitNewMovieForm={handleSubmitNewMovieForm} />
