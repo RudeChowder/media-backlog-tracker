@@ -15,4 +15,27 @@ code {
 .navbar {
   display: flex;
   justify-content: space-evenly;
+  border-bottom: 3px black solid;
+  background-color: rgb(220, 220, 220);
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-list-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr;
+  border: solid black 1px;
+  margin: 0 20px;
+  background-color:rgb(162, 226, 240);
+  font-weight: bold;
+}
+
+.movie-card {
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr;
+  border: solid black 1px;
+  margin: 0 20px;
 }

@@ -1,0 +1,22 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "12 Angry Men",
+      "genre": "Drama",
+      "year": 1957,
+      "runtime": 96,
+      "complete": false,
+      "rank": 1
+    },
+    {
+      "id": 2,
+      "title": "The Count of Monte Cristo",
+      "genre": "Adventure",
+      "year": 2002,
+      "runtime": 134,
+      "complete": true,
+      "rank": 2
+    }
+  ]
+}
