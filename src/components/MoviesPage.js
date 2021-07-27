@@ -63,6 +63,25 @@ const MoviesPage = () => {
       .catch(() => alert("Could not delete movie. Please try again."))
   }
 
+  const handleChangeMovieComplete = (id, complete) => {
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        complete: !complete
+      })
+    }
+    fetch(`${moviesUrl}/${id}`, configObj)
+      .then(resp => resp.json())
+      .then(data => {
+        const updatedMovies = movies.map(movie => movie.id === id ? data : movie)
+        setMovies(updatedMovies)
+      })
+  }
+
   const handleChangeFilter = (event) => setFilter(event.target.value)
   const handleChangeSort = (event) => setSort(event.target.value)
   const handleChangeCompletedToggle = () => setCompletedToggle(completedToggle => !completedToggle)
@@ -100,7 +119,11 @@ const MoviesPage = () => {
           onChangeCompletedToggle={handleChangeCompletedToggle}  
         />
         <Sort sort={sort} onChangeSort={handleChangeSort} />
-        <MoviesList movies={sortedFilteredMovies()} onDeleteMovie={handleDeleteMovie} />
+        <MoviesList
+          movies={sortedFilteredMovies()}
+          onDeleteMovie={handleDeleteMovie}
+          onChangeMovieComplete={handleChangeMovieComplete}
+        />
       </Route>
       <Route path="/movies/new">
         <NewMovieForm onSubmitNewMovieForm={handleSubmitNewMovieForm} />

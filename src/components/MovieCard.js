@@ -1,6 +1,6 @@
 import React from "react"
 
-const MovieCard = ({ movie, onDeleteMovie }) => {
+const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
   const { id, rank, title, genre, year, runtime, complete } = movie
 
   const handleClick = () => {
@@ -15,7 +15,11 @@ const MovieCard = ({ movie, onDeleteMovie }) => {
       <p>{genre}</p>
       <p>{runtime} min</p>
       <p>{year}</p>
-      <p>{complete ? "watched" : "unwatched"}</p>
+      <input
+        type="checkbox"
+        checked={complete ? true : false}
+        onChange={() => onChangeMovieComplete(id, complete)}
+      />
       <span className="button-container">
         <button className="edit-button" >✎</button>
         <button className="delete-button" onClick={handleClick}>X</button>

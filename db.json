@@ -6,7 +6,7 @@
       "genre": "Drama",
       "year": 1957,
       "runtime": 96,
-      "complete": false,
+      "complete": true,
       "rank": 1
     },
     {
@@ -15,7 +15,7 @@
       "genre": "Adventure",
       "year": 2002,
       "runtime": 134,
-      "complete": true,
+      "complete": false,
       "rank": 2
     },
     {
