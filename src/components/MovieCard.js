@@ -15,10 +15,14 @@ const MovieCard = ({ movie, onDeleteMovie }) => {
       <p>{genre}</p>
       <p>{runtime} min</p>
       <p>{year}</p>
-      <p>{ complete ? "watched" : "unwatched" }</p>
-      <button className="delete-button" onClick={handleClick}>X</button>
+      <p>{complete ? "watched" : "unwatched"}</p>
+      <span className="button-container">
+        <button className="edit-button" >✎</button>
+        <button className="delete-button" onClick={handleClick}>X</button>
+      </span>
     </div>
   )
 }
 
 export default MovieCard
+

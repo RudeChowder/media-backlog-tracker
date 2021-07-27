@@ -32,7 +32,7 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
       <form className="movie-form" onSubmit={handleSubmitMovieForm}>
         <span>
           <label htmlFor="title">Title: </label>
-          <input 
+          <input
             type="text"
             name="title"
             value={formData.title}
@@ -41,7 +41,7 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
         </span>
         <span>
           <label htmlFor="genre">Genre: </label>
-          <input 
+          <input
             type="text"
             name="genre"
             value={formData.genre}
@@ -50,7 +50,7 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
         </span>
         <span>
           <label htmlFor="runtime">Runtime: </label>
-          <input 
+          <input
             type="number"
             name="runtime"
             value={formData.runtime}
@@ -59,7 +59,7 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
         </span>
         <span>
           <label htmlFor="year">Year: </label>
-          <input 
+          <input
             type="number"
             name="year"
             value={formData.year}

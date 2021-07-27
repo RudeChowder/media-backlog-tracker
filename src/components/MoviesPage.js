@@ -7,16 +7,24 @@ import NewMovieForm from "./NewMovieForm"
 import Sort from "./Sort"
 
 const MoviesPage = () => {
-  const [movies, setMovies] = useState([])
+  const [completedToggle, setCompletedToggle] = useState(false)
   const [filter,setFilter] = useState("")
+  const [movies, setMovies] = useState([])
+  // const [rankings, setRankings] = useState([1,2,4,5,9])
   const [sort, setSort] = useState("")
   const moviesUrl = "http://localhost:3001/movies"
 
   useEffect(() => {
     fetch(moviesUrl)
       .then(resp => resp.json())
-      .then(data => setMovies(data))
-      .then(() => console.log("fetching movies"))
+      .then(data => {
+        setMovies(data)
+        // const initialRanking = []
+      //   data.forEach(movie => {
+      //     initialRanking.push(movie.id)
+      //   })
+      //   setRankings(initialRanking)
+      })
       .catch((error) => alert(`Could not fetch movies. Please try again. ${error}`))
   }, [])
 
@@ -57,10 +65,16 @@ const MoviesPage = () => {
 
   const handleChangeFilter = (event) => setFilter(event.target.value)
   const handleChangeSort = (event) => setSort(event.target.value)
+  const handleChangeCompletedToggle = () => setCompletedToggle(completedToggle => !completedToggle)
 
-  const filteredMovies = movies.filter(movie => {
-    return filter === "" ? true : movie.title.toLowerCase().includes(filter.toLowerCase())
-  })
+  const filteredMovies = movies
+    .filter(movie => movie.complete === completedToggle)
+    .filter(movie => filter === "" ? true : movie.title.toLowerCase().includes(filter.toLowerCase()))
+
+  // const filteredRankings = () => {
+  //   const filteredMovieIds = filteredMovies.map(movie => movie.id)
+  //   return rankings.filter(rank => filteredMovieIds.includes(rank))
+  // }
 
   const sortedFilteredMovies = () => {
     switch (sort) {
@@ -72,13 +86,19 @@ const MoviesPage = () => {
         return [...filteredMovies].sort(( a, b ) => a[sort] - b[sort])
       default:
         return filteredMovies
+        // return filteredRankings().map(rank => filteredMovies.find(movie => movie.id === rank))
     }
   }
 
   return (
     <Switch>
       <Route exact path="/movies">
-        <Filter filter={filter} onChangeFilter={handleChangeFilter} />
+        <Filter
+          filter={filter}
+          onChangeFilter={handleChangeFilter}
+          completedToggle={completedToggle} 
+          onChangeCompletedToggle={handleChangeCompletedToggle}  
+        />
         <Sort sort={sort} onChangeSort={handleChangeSort} />
         <MoviesList movies={sortedFilteredMovies()} onDeleteMovie={handleDeleteMovie} />
       </Route>

@@ -56,7 +56,7 @@ nav a.active {
 
 .movie-list-header {
   display: grid;
-  grid-template-columns: 2fr repeat(5, 3fr) 1fr;
+  grid-template-columns: 2fr repeat(5, 3fr) 2fr;
   border: solid black 1px;
   margin: 0 20px;
   background-color:rgb(162, 226, 240);
@@ -65,7 +65,7 @@ nav a.active {
 
 .movie-card {
   display: grid;
-  grid-template-columns: 2fr repeat(5, 3fr) 1fr;
+  grid-template-columns: 2fr repeat(5, 3fr) 2fr;
   border: solid black 1px;
   margin: 0 20px;
   justify-items: center;
@@ -78,6 +78,18 @@ nav a.active {
   gap: 15px;
 }
 
+.button-container {
+  justify-items: center;
+}
+
+.edit-button {
+  height: 20px;
+  width: 25px;
+  margin-right: 3px;
+}
+
 .delete-button {
   color: red;
+  height: 20px;
+  width: 25px;
 }
