@@ -72,6 +72,10 @@ nav a.active {
   align-items: center;
 }
 
+.movie-card.complete{
+  background-color: rgb(198, 254, 198);
+}
+
 .movie-form {
   padding: 10px;
   display: inline-flex;
@@ -94,6 +98,7 @@ nav a.active {
   height: 20px;
   width: 25px;
   margin-right: 3px;
+  transform: scaleX(-1);
 }
 
 .delete-button {

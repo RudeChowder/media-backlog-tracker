@@ -10,7 +10,7 @@ const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
   }
 
   return (
-    <div className="movie-card">
+    <div className={`movie-card${complete ? " complete" : ""}`}>
       <p>{rank}</p>
       <h4>{title}</h4>
       <p>{genre}</p>
@@ -22,7 +22,7 @@ const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
         onChange={() => onChangeMovieComplete(id, complete)}
       />
       <span className="button-container">
-        <Link to={`/movies/${id}/edit`}><button className="edit-button" >✎</button></Link>
+        <Link to={`/movies/${id}/edit`}><button className="edit-button">✎</button></Link>
         <button className="delete-button" onClick={handleClick}>X</button>
       </span>
     </div>
