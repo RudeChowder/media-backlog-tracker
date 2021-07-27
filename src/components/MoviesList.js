@@ -6,12 +6,12 @@ import MovieCard from "./MovieCard"
 const MoviesList = ({ movies, onDeleteMovie, onChangeMovieComplete }) => {
   const movieItems = movies.map( movie => {
     return (
-      <MovieCard 
+      <MovieCard
         key={movie.id}
         movie={movie}
         onDeleteMovie={onDeleteMovie}
         onChangeMovieComplete={onChangeMovieComplete}
-      /> 
+      />
     )
   })
 
@@ -24,8 +24,8 @@ const MoviesList = ({ movies, onDeleteMovie, onChangeMovieComplete }) => {
         <p>Rank</p>
         <p>Title</p>
         <p>Genre</p>
-        <p>Runtime</p>
         <p>Year</p>
+        <p>Runtime</p>
         <p>Complete</p>
       </div>
       {movieItems}

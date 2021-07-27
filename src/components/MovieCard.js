@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
   const { id, rank, title, genre, year, runtime, complete } = movie
@@ -13,15 +14,15 @@ const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
       <p>{rank}</p>
       <h4>{title}</h4>
       <p>{genre}</p>
-      <p>{runtime} min</p>
       <p>{year}</p>
+      <p>{runtime} min</p>
       <input
         type="checkbox"
         checked={complete ? true : false}
         onChange={() => onChangeMovieComplete(id, complete)}
       />
       <span className="button-container">
-        <button className="edit-button" >✎</button>
+        <Link to={`/movies/${id}/edit`}><button className="edit-button" >✎</button></Link>
         <button className="delete-button" onClick={handleClick}>X</button>
       </span>
     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, useRouteMatch } from "react-router-dom"
 
+import EditMovieForm from "./EditMovieForm"
 import Filter from "./Filter"
 import MoviesList from "./MoviesList"
 import NewMovieForm from "./NewMovieForm"
@@ -13,6 +14,7 @@ const MoviesPage = () => {
   // const [rankings, setRankings] = useState([1,2,4,5,9])
   const [sort, setSort] = useState("")
   const moviesUrl = "http://localhost:3001/movies"
+  const match = useRouteMatch()
 
   useEffect(() => {
     fetch(moviesUrl)
@@ -53,6 +55,31 @@ const MoviesPage = () => {
       .then(data => setMovies([...movies, data]))
       .catch((error) => alert("Ran into an error while trying to save. Please try again."))
   }
+
+  const handleSubmitEditMovieForm = (id, movieInfo) => {
+    const {title, genre, year, runtime} = movieInfo
+
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        title: title,
+        genre: genre,
+        year: year,
+        runtime: runtime
+      })
+    }
+    fetch(`${moviesUrl}/${id}`, configObj)
+      .then(resp => resp.json())
+      .then(data => {
+        const updatedMovies = movies.map(movie => movie.id === parseInt(id) ? data : movie)
+        setMovies(updatedMovies)
+      })
+  }
+
 
   const handleDeleteMovie = (id) => {
     fetch(`${moviesUrl}/${id}`, {method: "DELETE"})
@@ -111,7 +138,7 @@ const MoviesPage = () => {
 
   return (
     <Switch>
-      <Route exact path="/movies">
+      <Route exact path={`${match.url}`} >
         <Filter
           filter={filter}
           onChangeFilter={handleChangeFilter}
@@ -125,8 +152,11 @@ const MoviesPage = () => {
           onChangeMovieComplete={handleChangeMovieComplete}
         />
       </Route>
-      <Route path="/movies/new">
+      <Route path={`${match.url}/new`} >
         <NewMovieForm onSubmitNewMovieForm={handleSubmitNewMovieForm} />
+      </Route>
+      <Route exact path={`${match.url}/:id/edit`}>
+        <EditMovieForm movies={movies} onSubmitEditMovieForm={handleSubmitEditMovieForm} />
       </Route>
     </Switch>
   )

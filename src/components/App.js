@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router'
 
 import '../App.css'
@@ -8,6 +8,10 @@ import MoviesPage from './MoviesPage'
 import NavBar from './NavBar'
 
 function App() {
+  useEffect(() => {
+    document.title ="Backlog Tracker"
+  }, [])
+
   return (
     <div className="App">
       <NavBar />

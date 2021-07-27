@@ -73,9 +73,17 @@ nav a.active {
 }
 
 .movie-form {
+  padding: 10px;
   display: inline-flex;
   flex-direction: column;
   gap: 15px;
+  background-color: #E3E3E3;
+}
+
+.movie-form-input {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
 }
 
 .button-container {
@@ -92,4 +100,16 @@ nav a.active {
   color: red;
   height: 20px;
   width: 25px;
+}
+
+.submit-button {
+  margin: 8px 4px 0 0 ;
+  width: 100px;
+  align-self: center;
+}
+
+.cancel-button {
+  margin: 8px 0 0 4px ;
+  width: 100px;
+  align-self: center;
 }

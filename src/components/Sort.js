@@ -8,8 +8,8 @@ const Sort = ({ sort, onChangeSort }) => {
         <option value=""></option>
         <option value="title">Title</option>
         <option value="genre">Genre</option>
-        <option value="runtime">Runtime</option>
         <option value="year">Year</option>
+        <option value="runtime">Runtime</option>
       </select>
     </div>
   )
