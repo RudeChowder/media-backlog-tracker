@@ -1,6 +1,6 @@
 import React from "react"
 
-const CompletedToggle = ({ viewCompleted, onChangeViewCompleted }) => {
+const ViewToggle = ({ viewCompleted, onChangeViewCompleted }) => {
   const handleClick = (event) => event.target.getAttribute("name") === "complete" ? onChangeViewCompleted(true) : onChangeViewCompleted(false)
 
   return (
@@ -15,4 +15,4 @@ const CompletedToggle = ({ viewCompleted, onChangeViewCompleted }) => {
   )
 }
 
-export default CompletedToggle
+export default ViewToggle

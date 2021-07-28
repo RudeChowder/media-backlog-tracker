@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Route, Switch, useRouteMatch } from "react-router-dom"
 
-import CompletedToggle from "./CompletedToggle"
+import ViewToggle from "./ViewToggle"
 import EditMovieForm from "./EditMovieForm"
 import Filter from "./Filter"
 import MoviesList from "./MoviesList"
@@ -140,7 +140,7 @@ const MoviesPage = () => {
   return (
     <Switch>
       <Route exact path={`${match.url}`} >
-        <CompletedToggle
+        <ViewToggle
           viewCompleted={viewCompleted}
           onChangeViewCompleted={handleChangeViewCompleted} 
         />
