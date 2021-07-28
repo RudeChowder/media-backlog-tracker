@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
 
 const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
   const { id, title, genre, year, runtime, complete } = movie // rank,
@@ -21,7 +20,7 @@ const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
       <p>{runtime} min</p>
       <input
         type="checkbox"
-        checked={complete ? true : false}
+        checked={complete}
         onChange={() => onChangeMovieComplete(id, complete)}
       />
       <span className="button-container">

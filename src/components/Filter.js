@@ -1,10 +1,10 @@
 import React from "react"
 
 const Filter = ({ filter, onChangeFilter }) => {
-  return(
+  return (
     <span className="filter" >
       <label htmlFor="filter">Filter: </label>
-      <input 
+      <input
         type="text"
         name="filter"
         placeholder="Search by title"

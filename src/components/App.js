@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import { Route, Switch } from 'react-router'
+import React, { useEffect } from "react"
+import { Route, Switch } from "react-router"
 
-import '../App.css'
+import "../App.css"
 
 import Home from "./Home"
-import NavBar from './NavBar'
+import NavBar from "./NavBar"
 
 import GamesPage from "./games/GamesPage"
-import MoviesPage from './movies/MoviesPage'
+import MoviesPage from "./movies/MoviesPage"
 
-function App() {
+const App = () => {
   useEffect(() => {
-    document.title ="Backlog Tracker"
+    document.title = "Backlog Tracker"
   }, [])
 
   return (
@@ -32,7 +32,7 @@ function App() {
         </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

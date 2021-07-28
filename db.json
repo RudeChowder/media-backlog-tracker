@@ -69,9 +69,25 @@
       "title": "Control",
       "genre": "Action-Adventure",
       "year": 2019,
-      "platform": null,
+      "platform": "PC",
       "complete": false,
       "id": 1
+    },
+    {
+      "title": "Hades",
+      "genre": "Rogue-Like",
+      "year": 2020,
+      "platform": "PC",
+      "complete": true,
+      "id": 2
+    },
+    {
+      "title": "Bloodborne",
+      "genre": "Action RPG",
+      "year": 2015,
+      "platform": "PS4",
+      "complete": false,
+      "id": 3
     }
   ]
 }

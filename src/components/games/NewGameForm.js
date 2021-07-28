@@ -8,12 +8,12 @@ const NewGameForm = ({ onSubmitNewGameForm }) => {
     title: "",
     genre: "",
     year: "",
-    runtime: ""
+    platform: ""
   })
 
   const history = useHistory()
 
-  const handleChangeInput = (event) => setFormData({...formData, [event.target.name]: event.target.value})
+  const handleChangeInput = (event) => setFormData({ ...formData, [event.target.name]: event.target.value })
 
   const handleSubmitGameForm = (event) => {
     event.preventDefault()

@@ -5,10 +5,10 @@ import MovieForm from "./MovieForm"
 
 const EditMovieForm = ({ movies, onSubmitEditMovieForm }) => {
   const [formData, setFormData] = useState({
-      title: "",
-      genre: "",
-      year: "",
-      runtime: ""
+    title: "",
+    genre: "",
+    year: "",
+    runtime: ""
   })
   const history = useHistory()
   const { id } = useParams()
@@ -23,9 +23,9 @@ const EditMovieForm = ({ movies, onSubmitEditMovieForm }) => {
     })
   }, [movie])
 
-  if (!movie) {return <h2>Could not find that movie</h2>}
+  if (!movie) { return <h2>Could not find that movie</h2> }
 
-  const handleChangeInput = (event) => setFormData({...formData, [event.target.name]: event.target.value})
+  const handleChangeInput = (event) => setFormData({ ...formData, [event.target.name]: event.target.value })
 
   const handleSubmitMovieForm = (event) => {
     event.preventDefault()
@@ -40,7 +40,7 @@ const EditMovieForm = ({ movies, onSubmitEditMovieForm }) => {
   return (
     <main>
       <h3>Edit Movie Form</h3>
-      <p>Update your movie's info</p>
+      <p>Update the movie info</p>
       <MovieForm
         formData={formData}
         onChangeInput={handleChangeInput}

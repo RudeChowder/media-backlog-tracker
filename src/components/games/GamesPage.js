@@ -12,7 +12,7 @@ import NewGameForm from "./NewGameForm"
 
 const GamesPage = () => {
   const [viewCompleted, setViewCompleted] = useState(false)
-  const [filter,setFilter] = useState("")
+  const [filter, setFilter] = useState("")
   const [games, setGames] = useState([])
   const [sort, setSort] = useState("")
   const gamesUrl = "http://localhost:3001/games"
@@ -28,13 +28,13 @@ const GamesPage = () => {
   }, [])
 
   const handleSubmitNewGameForm = (newGame) => {
-    const {title, genre, year, platform} = newGame
+    const { title, genre, year, platform } = newGame
     const newRecordInfo = {
       title: title,
       genre: genre,
       year: parseInt(year),
       platform: parseInt(platform),
-      complete: false,
+      complete: false
     }
 
     Fetcher.post(gamesUrl, newRecordInfo)
@@ -43,7 +43,7 @@ const GamesPage = () => {
   }
 
   const handleSubmitEditGameForm = (id, gameInfo) => {
-    const {title, genre, year, platform} = gameInfo
+    const { title, genre, year, platform } = gameInfo
     const updateObj = {
       title: title,
       genre: genre,
@@ -60,7 +60,7 @@ const GamesPage = () => {
   }
 
   const handleChangeGameComplete = (id, complete) => {
-    const updateObj = {complete: !complete}
+    const updateObj = { complete: !complete }
 
     Fetcher.patch(gamesUrl, id, updateObj)
       .then(data => {
@@ -72,7 +72,7 @@ const GamesPage = () => {
   const handleDeleteGame = (id) => {
     Fetcher.delete(gamesUrl, id)
       .then(() => {
-        const updatedGames = games.filter( Game => Game.id !== id )
+        const updatedGames = games.filter(Game => Game.id !== id)
         setGames(updatedGames)
       })
       .catch((error) => alert(`Could not delete. Please try again. ${error}`))
@@ -88,12 +88,12 @@ const GamesPage = () => {
 
   const sortedFilteredGames = () => {
     switch (sort) {
-      case "title": 
+      case "title":
       case "genre":
       case "platform":
-        return [...filteredGames].sort(( a, b ) => a[sort].localeCompare(b[sort]))
+        return [...filteredGames].sort((a, b) => a[sort].localeCompare(b[sort]))
       case "year":
-        return [...filteredGames].sort(( a, b ) => a[sort] - b[sort])
+        return [...filteredGames].sort((a, b) => a[sort] - b[sort])
       default:
         return filteredGames
     }
@@ -104,11 +104,11 @@ const GamesPage = () => {
       <Route exact path={`${match.url}`} >
         <ViewToggle
           viewCompleted={viewCompleted}
-          onChangeViewCompleted={handleChangeViewCompleted} 
+          onChangeViewCompleted={handleChangeViewCompleted}
         />
         <Filter
           filter={filter}
-          onChangeFilter={handleChangeFilter} 
+          onChangeFilter={handleChangeFilter}
         />
         <Sort
           sort={sort}

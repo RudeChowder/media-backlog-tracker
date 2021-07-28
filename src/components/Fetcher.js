@@ -11,7 +11,7 @@ class Fetcher {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json"
       },
       body: JSON.stringify(newRecordInfo)
     }
@@ -26,7 +26,7 @@ class Fetcher {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json"
       },
       body: JSON.stringify(updateObj)
     }
@@ -38,7 +38,7 @@ class Fetcher {
 
   static delete (url, id) {
     return (
-      fetch(`${url}/${id}`, {method: "DELETE"})
+      fetch(`${url}/${id}`, { method: "DELETE" })
     )
   }
 }

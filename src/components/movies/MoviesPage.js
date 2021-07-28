@@ -12,7 +12,7 @@ import NewMovieForm from "./NewMovieForm"
 
 const MoviesPage = () => {
   const [viewCompleted, setViewCompleted] = useState(false)
-  const [filter,setFilter] = useState("")
+  const [filter, setFilter] = useState("")
   const [movies, setMovies] = useState([])
   // const [rankings, setRankings] = useState([1,2,4,5,9])
   const [sort, setSort] = useState("")
@@ -34,14 +34,14 @@ const MoviesPage = () => {
   }, [])
 
   const handleSubmitNewMovieForm = (newMovie) => {
-    const {title, genre, year, runtime} = newMovie
+    const { title, genre, year, runtime } = newMovie
     // const maxRank = movies.reduce(( a, b ) => a.rank > b.rank ? a.rank : b.rank)
     const newRecordInfo = {
       title: title,
       genre: genre,
       year: parseInt(year),
       runtime: parseInt(runtime),
-      complete: false,
+      complete: false
       // rank: parseInt(maxRank + 1)
     }
 
@@ -51,7 +51,7 @@ const MoviesPage = () => {
   }
 
   const handleSubmitEditMovieForm = (id, movieInfo) => {
-    const {title, genre, year, runtime} = movieInfo
+    const { title, genre, year, runtime } = movieInfo
     const updateObj = {
       title: title,
       genre: genre,
@@ -68,7 +68,7 @@ const MoviesPage = () => {
   }
 
   const handleChangeMovieComplete = (id, complete) => {
-    const updateObj = {complete: !complete}
+    const updateObj = { complete: !complete }
 
     Fetcher.patch(moviesUrl, id, updateObj)
       .then(data => {
@@ -80,7 +80,7 @@ const MoviesPage = () => {
   const handleDeleteMovie = (id) => {
     Fetcher.delete(moviesUrl, id)
       .then(() => {
-        const updatedMovies = movies.filter( movie => movie.id !== id )
+        const updatedMovies = movies.filter(movie => movie.id !== id)
         setMovies(updatedMovies)
       })
       .catch((error) => alert(`Could not delete. Please try again. ${error}`))
@@ -101,12 +101,12 @@ const MoviesPage = () => {
 
   const sortedFilteredMovies = () => {
     switch (sort) {
-      case "title": 
+      case "title":
       case "genre":
-        return [...filteredMovies].sort(( a, b ) => a[sort].localeCompare(b[sort]))
+        return [...filteredMovies].sort((a, b) => a[sort].localeCompare(b[sort]))
       case "runtime":
       case "year":
-        return [...filteredMovies].sort(( a, b ) => a[sort] - b[sort])
+        return [...filteredMovies].sort((a, b) => a[sort] - b[sort])
       default:
         return filteredMovies
         // return filteredRankings().map(rank => filteredMovies.find(movie => movie.id === rank))
@@ -118,11 +118,11 @@ const MoviesPage = () => {
       <Route exact path={`${match.url}`} >
         <ViewToggle
           viewCompleted={viewCompleted}
-          onChangeViewCompleted={handleChangeViewCompleted} 
+          onChangeViewCompleted={handleChangeViewCompleted}
         />
         <Filter
           filter={filter}
-          onChangeFilter={handleChangeFilter} 
+          onChangeFilter={handleChangeFilter}
         />
         <Sort
           sort={sort}

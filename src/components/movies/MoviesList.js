@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import MovieCard from "./MovieCard"
 
 const MoviesList = ({ movies, onDeleteMovie, onChangeMovieComplete }) => {
-  const movieItems = movies.map( movie => {
+  const movieItems = movies.map(movie => {
     return (
       <MovieCard
         key={movie.id}

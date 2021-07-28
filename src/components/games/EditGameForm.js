@@ -5,10 +5,10 @@ import GameForm from "./GameForm"
 
 const EditGameForm = ({ games, onSubmitEditGameForm }) => {
   const [formData, setFormData] = useState({
-      title: "",
-      genre: "",
-      year: "",
-      platform: ""
+    title: "",
+    genre: "",
+    year: "",
+    platform: ""
   })
   const history = useHistory()
   const { id } = useParams()
@@ -23,9 +23,9 @@ const EditGameForm = ({ games, onSubmitEditGameForm }) => {
     })
   }, [game])
 
-  if (!game) {return <h2>Could not find that Game</h2>}
+  if (!game) { return <h2>Could not find that Game</h2> }
 
-  const handleChangeInput = (event) => setFormData({...formData, [event.target.name]: event.target.value})
+  const handleChangeInput = (event) => setFormData({ ...formData, [event.target.name]: event.target.value })
 
   const handleSubmitGameForm = (event) => {
     event.preventDefault()
@@ -40,7 +40,7 @@ const EditGameForm = ({ games, onSubmitEditGameForm }) => {
   return (
     <main>
       <h3>Edit Game Form</h3>
-      <p>Update your Game's info</p>
+      <p>Update the game info</p>
       <GameForm
         formData={formData}
         onChangeInput={handleChangeInput}

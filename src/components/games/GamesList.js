@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import GameCard from "./GameCard"
 
 const GamesList = ({ games, onDeleteGame, onChangeGameComplete }) => {
-  const GameItems = games.map( game => {
+  const GameItems = games.map(game => {
     return (
       <GameCard
         key={game.id}
