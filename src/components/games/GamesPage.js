@@ -33,7 +33,7 @@ const GamesPage = () => {
       title: title,
       genre: genre,
       year: parseInt(year),
-      platform: parseInt(platform),
+      platform: platform,
       complete: false
     }
 
@@ -72,7 +72,7 @@ const GamesPage = () => {
   const handleDeleteGame = (id) => {
     Fetcher.delete(gamesUrl, id)
       .then(() => {
-        const updatedGames = games.filter(Game => Game.id !== id)
+        const updatedGames = games.filter(game => game.id !== id)
         setGames(updatedGames)
       })
       .catch((error) => alert(`Could not delete. Please try again. ${error}`))

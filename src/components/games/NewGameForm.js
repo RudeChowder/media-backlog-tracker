@@ -17,7 +17,6 @@ const NewGameForm = ({ onSubmitNewGameForm }) => {
 
   const handleSubmitGameForm = (event) => {
     event.preventDefault()
-    console.log(formData)
     if (formData.title !== "") {
       onSubmitNewGameForm(formData)
       history.push("/games")

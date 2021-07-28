@@ -1,16 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import MovieCard from "./MovieCard"
+import ItemCard from "../ItemCard"
 
 const MoviesList = ({ movies, onDeleteMovie, onChangeMovieComplete }) => {
   const movieItems = movies.map(movie => {
     return (
-      <MovieCard
+      <ItemCard
         key={movie.id}
-        movie={movie}
-        onDeleteMovie={onDeleteMovie}
-        onChangeMovieComplete={onChangeMovieComplete}
+        item={movie}
+        itemType="movie"
+        onDeleteItem={onDeleteMovie}
+        onChangeItemComplete={onChangeMovieComplete}
       />
     )
   })
@@ -21,7 +22,6 @@ const MoviesList = ({ movies, onDeleteMovie, onChangeMovieComplete }) => {
         Add New Movie
       </Link>
       <div className="item-list-header">
-        {/* <p>Rank</p> */}
         <p>Title</p>
         <p>Genre</p>
         <p>Year</p>

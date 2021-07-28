@@ -13,11 +13,10 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
 
   const history = useHistory()
 
-  const handleChangeInput = (event) => setFormData({...formData, [event.target.name]: event.target.value})
+  const handleChangeInput = (event) => setFormData({ ...formData, [event.target.name]: event.target.value })
 
   const handleSubmitMovieForm = (event) => {
     event.preventDefault()
-    console.log(formData)
     if (formData.title !== "") {
       onSubmitNewMovieForm(formData)
       history.push("/movies")

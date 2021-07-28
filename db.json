@@ -6,8 +6,7 @@
       "genre": "Drama",
       "year": 1957,
       "runtime": 96,
-      "complete": false,
-      "rank": 1
+      "complete": false
     },
     {
       "id": 2,
@@ -15,8 +14,7 @@
       "genre": "Adventure",
       "year": 2002,
       "runtime": 134,
-      "complete": true,
-      "rank": 2
+      "complete": true
     },
     {
       "title": "Blood Red Sky",
@@ -24,7 +22,6 @@
       "year": 2021,
       "runtime": 121,
       "complete": true,
-      "rank": 3,
       "id": 3
     },
     {
@@ -33,7 +30,6 @@
       "year": 1976,
       "runtime": 122,
       "complete": false,
-      "rank": 4,
       "id": 4
     },
     {
@@ -42,7 +38,6 @@
       "year": 1967,
       "runtime": 103,
       "complete": false,
-      "rank": 5,
       "id": 5
     },
     {
@@ -51,7 +46,6 @@
       "year": 2019,
       "runtime": 119,
       "complete": true,
-      "rank": 6,
       "id": 6
     },
     {
@@ -60,34 +54,10 @@
       "year": 2021,
       "runtime": 109,
       "complete": false,
-      "rank": 7,
       "id": 7
     }
   ],
   "games": [
-    {
-      "title": "Control",
-      "genre": "Action-Adventure",
-      "year": 2019,
-      "platform": "PC",
-      "complete": false,
-      "id": 1
-    },
-    {
-      "title": "Hades",
-      "genre": "Rogue-Like",
-      "year": 2020,
-      "platform": "PC",
-      "complete": true,
-      "id": 2
-    },
-    {
-      "title": "Bloodborne",
-      "genre": "Action RPG",
-      "year": 2015,
-      "platform": "PS4",
-      "complete": false,
-      "id": 3
-    }
+    
   ]
 }

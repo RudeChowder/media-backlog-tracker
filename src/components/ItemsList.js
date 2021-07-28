@@ -1,17 +1,16 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import ItemCard from "../ItemCard"
+import GameCard from "./GameCard"
 
 const GamesList = ({ games, onDeleteGame, onChangeGameComplete }) => {
   const GameItems = games.map(game => {
     return (
-      <ItemCard
+      <GameCard
         key={game.id}
-        item={game}
-        itemType="game"
-        onDeleteItem={onDeleteGame}
-        onChangeItemComplete={onChangeGameComplete}
+        game={game}
+        onDeleteGame={onDeleteGame}
+        onChangeGameComplete={onChangeGameComplete}
       />
     )
   })
