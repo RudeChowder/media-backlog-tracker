@@ -68,8 +68,8 @@ const MoviesPage = () => {
       body: JSON.stringify({
         title: title,
         genre: genre,
-        year: year,
-        runtime: runtime
+        year: parseInt(year),
+        runtime: parseInt(runtime)
       })
     }
     fetch(`${moviesUrl}/${id}`, configObj)
