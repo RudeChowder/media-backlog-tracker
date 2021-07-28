@@ -16,12 +16,12 @@ const MoviesList = ({ movies, onDeleteMovie, onChangeMovieComplete }) => {
   })
 
   return (
-    <div className="movie-list">
-      <Link className="new-movie-link" to="/movies/new">
+    <div className="item-list">
+      <Link className="new-item-link" to="/movies/new">
         Add New Movie
       </Link>
-      <div className="movie-list-header">
-        <p>Rank</p>
+      <div className="item-list-header">
+        {/* <p>Rank</p> */}
         <p>Title</p>
         <p>Genre</p>
         <p>Year</p>

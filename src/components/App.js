@@ -6,6 +6,7 @@ import '../App.css'
 import Home from "./Home"
 import NavBar from './NavBar'
 
+import GamesPage from "./games/GamesPage"
 import MoviesPage from './movies/MoviesPage'
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
           <MoviesPage />
         </Route>
         <Route path="/games">
-          <p>Hello from the games page</p>
+          <GamesPage />
         </Route>
         <Route path="/books">
           <p>Hello from the books page</p>

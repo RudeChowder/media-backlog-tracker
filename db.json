@@ -63,5 +63,15 @@
       "rank": 7,
       "id": 7
     }
+  ],
+  "games": [
+    {
+      "title": "Control",
+      "genre": "Action-Adventure",
+      "year": 2019,
+      "platform": null,
+      "complete": false,
+      "id": 1
+    }
   ]
 }

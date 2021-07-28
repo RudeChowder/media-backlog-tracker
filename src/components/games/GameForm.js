@@ -1,12 +1,12 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
 
-const MovieForm = ({ formData, onChangeInput, onSubmitMovieForm }) => {
+const GameForm = ({ formData, onChangeInput, onSubmitGameForm }) => {
   const history = useHistory()
-  const handleClickCancel = () => history.push("/movies")
+  const handleClickCancel = () => history.push("/games")
 
   return (
-    <form className="item-form" onSubmit={onSubmitMovieForm}>
+    <form className="item-form" onSubmit={onSubmitGameForm}>
         <span className="item-form-input">
           <label htmlFor="title">Title: </label>
           <input
@@ -35,11 +35,11 @@ const MovieForm = ({ formData, onChangeInput, onSubmitMovieForm }) => {
           />
         </span>
         <span className="item-form-input">
-          <label htmlFor="runtime">Runtime: </label>
+          <label htmlFor="platform">Platform: </label>
           <input
-            type="number"
-            name="runtime"
-            value={formData.runtime}
+            type="text"
+            name="platform"
+            value={formData.platform}
             onChange={onChangeInput}
           />
         </span>
@@ -51,4 +51,4 @@ const MovieForm = ({ formData, onChangeInput, onSubmitMovieForm }) => {
   )
 }
 
-export default MovieForm
+export default GameForm

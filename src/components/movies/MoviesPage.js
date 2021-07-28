@@ -35,14 +35,14 @@ const MoviesPage = () => {
 
   const handleSubmitNewMovieForm = (newMovie) => {
     const {title, genre, year, runtime} = newMovie
-    const maxRank = movies.reduce(( a, b ) => a.rank > b.rank ? a.rank : b.rank)
+    // const maxRank = movies.reduce(( a, b ) => a.rank > b.rank ? a.rank : b.rank)
     const newRecordInfo = {
       title: title,
       genre: genre,
       year: parseInt(year),
       runtime: parseInt(runtime),
       complete: false,
-      rank: parseInt(maxRank + 1)
+      // rank: parseInt(maxRank + 1)
     }
 
     Fetcher.post(moviesUrl, newRecordInfo)
