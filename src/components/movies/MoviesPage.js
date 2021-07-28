@@ -7,7 +7,7 @@ import Sort from "../Sort"
 import ViewToggle from "../ViewToggle"
 
 import EditMovieForm from "./EditMovieForm"
-import MoviesList from "./MoviesList"
+import ItemsList from "../ItemsList"
 import NewMovieForm from "./NewMovieForm"
 
 const MoviesPage = () => {
@@ -129,10 +129,11 @@ const MoviesPage = () => {
           onChangeSort={handleChangeSort}
           options={sortOptions}
         />
-        <MoviesList
-          movies={sortedFilteredMovies()}
-          onDeleteMovie={handleDeleteMovie}
-          onChangeMovieComplete={handleChangeMovieComplete}
+        <ItemsList
+          items={sortedFilteredMovies()}
+          itemType="Movie"
+          onDeleteItem={handleDeleteMovie}
+          onChangeItemComplete={handleChangeMovieComplete}
         />
       </Route>
       <Route path={`${match.url}/new`} >

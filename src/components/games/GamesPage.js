@@ -5,9 +5,9 @@ import Fetcher from "../Fetcher"
 import Filter from "../Filter"
 import Sort from "../Sort"
 import ViewToggle from "../ViewToggle"
+import ItemsList from "../ItemsList"
 
 import EditGameForm from "./EditGameForm"
-import GamesList from "./GamesList"
 import NewGameForm from "./NewGameForm"
 
 const GamesPage = () => {
@@ -115,10 +115,11 @@ const GamesPage = () => {
           onChangeSort={handleChangeSort}
           options={sortOptions}
         />
-        <GamesList
-          games={sortedFilteredGames()}
-          onDeleteGame={handleDeleteGame}
-          onChangeGameComplete={handleChangeGameComplete}
+        <ItemsList
+          items={sortedFilteredGames()}
+          itemType="Game"
+          onDeleteItem={handleDeleteGame}
+          onChangeItemComplete={handleChangeGameComplete}
         />
       </Route>
       <Route path={`${match.url}/new`} >
