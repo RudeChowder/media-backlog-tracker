@@ -7,7 +7,7 @@ const Filter = ({ filter, onChangeFilter }) => {
       <input 
         type="text"
         name="filter"
-        placeholder="Search"
+        placeholder="Search by title"
         value={filter}
         onChange={onChangeFilter}
       />

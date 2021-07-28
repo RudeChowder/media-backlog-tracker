@@ -1,5 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
   const { id, rank, title, genre, year, runtime, complete } = movie
@@ -22,8 +25,8 @@ const MovieCard = ({ movie, onDeleteMovie, onChangeMovieComplete }) => {
         onChange={() => onChangeMovieComplete(id, complete)}
       />
       <span className="button-container">
-        <Link to={`/movies/${id}/edit`}><button className="edit-button">✎</button></Link>
-        <button className="delete-button" onClick={handleClick}>X</button>
+        <Link to={`/movies/${id}/edit`}><FontAwesomeIcon className="edit-button" icon={faEdit} /></Link>
+        <span className="delete-button" onClick={handleClick}><FontAwesomeIcon icon={faTrash} /></span>
       </span>
     </div>
   )

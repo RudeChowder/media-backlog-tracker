@@ -17,10 +17,6 @@ a {
   text-decoration: none;
 }
 
-.button-container {
-  justify-items: center;
-}
-
 .cancel-button {
   margin: 8px 0 0 4px ;
   width: 100px;
@@ -28,16 +24,17 @@ a {
 }
 
 .delete-button {
-  color: red;
+  color: rgb(255, 89, 89);
   height: 20px;
   width: 25px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .edit-button {
-  height: 20px;
+  height: 16px;
   width: 25px;
-  margin-right: 3px;
-  transform: scaleX(-1);
+  margin-right: 10px;
 }
 
 .filter {
@@ -62,6 +59,7 @@ a {
   display: grid;
   grid-template-columns: 2fr repeat(5, 3fr) 2fr;
   border: solid black 1px;
+  border-top: none;
   margin: 0 20px;
   justify-items: center;
   align-items: center;
@@ -128,6 +126,7 @@ nav a.active {
   padding: 5px;
   border: black 2px solid;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .view-toggle.active {
