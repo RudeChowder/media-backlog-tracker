@@ -17,6 +17,7 @@ const NewMovieForm = ({ onSubmitNewMovieForm }) => {
 
   const handleSubmitMovieForm = (event) => {
     event.preventDefault()
+    console.log(formData)
     if (formData.title !== "") {
       onSubmitNewMovieForm(formData)
       history.push("/movies")

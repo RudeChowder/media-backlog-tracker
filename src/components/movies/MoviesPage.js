@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { Route, Switch, useRouteMatch } from "react-router-dom"
 
-import ViewToggle from "./ViewToggle"
+import Fetcher from "../Fetcher"
+import Filter from "../Filter"
+import Sort from "../Sort"
+import ViewToggle from "../ViewToggle"
+
 import EditMovieForm from "./EditMovieForm"
-import Filter from "./Filter"
 import MoviesList from "./MoviesList"
 import NewMovieForm from "./NewMovieForm"
-import Sort from "./Sort"
 
 const MoviesPage = () => {
   const [viewCompleted, setViewCompleted] = useState(false)
@@ -16,10 +18,10 @@ const MoviesPage = () => {
   const [sort, setSort] = useState("")
   const moviesUrl = "http://localhost:3001/movies"
   const match = useRouteMatch()
+  const sortOptions = ["Title", "Genre", "Year", "Runtime"]
 
   useEffect(() => {
-    fetch(moviesUrl)
-      .then(resp => resp.json())
+    Fetcher.get(moviesUrl)
       .then(data => {
         setMovies(data)
         // const initialRanking = []
@@ -33,81 +35,55 @@ const MoviesPage = () => {
 
   const handleSubmitNewMovieForm = (newMovie) => {
     const {title, genre, year, runtime} = newMovie
-    
     const maxRank = movies.reduce(( a, b ) => a.rank > b.rank ? a.rank : b.rank)
-    const configObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        title: title,
-        genre: genre,
-        year: parseInt(year),
-        runtime: parseInt(runtime),
-        complete: false,
-        rank: parseInt(maxRank + 1)
-      })
+    const newRecordInfo = {
+      title: title,
+      genre: genre,
+      year: parseInt(year),
+      runtime: parseInt(runtime),
+      complete: false,
+      rank: parseInt(maxRank + 1)
     }
 
-    fetch(moviesUrl, configObj)
-      .then(resp => resp.json())
+    Fetcher.post(moviesUrl, newRecordInfo)
       .then(data => setMovies([...movies, data]))
-      .catch((error) => alert("Ran into an error while trying to save. Please try again."))
+      .catch((error) => alert(`Ran into an error while trying to save. Please try again. ${error}`))
   }
 
   const handleSubmitEditMovieForm = (id, movieInfo) => {
     const {title, genre, year, runtime} = movieInfo
-
-    const configObj = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        title: title,
-        genre: genre,
-        year: parseInt(year),
-        runtime: parseInt(runtime)
-      })
+    const updateObj = {
+      title: title,
+      genre: genre,
+      year: parseInt(year),
+      runtime: parseInt(runtime)
     }
-    fetch(`${moviesUrl}/${id}`, configObj)
-      .then(resp => resp.json())
+
+    Fetcher.patch(moviesUrl, id, updateObj)
       .then(data => {
         const updatedMovies = movies.map(movie => movie.id === parseInt(id) ? data : movie)
         setMovies(updatedMovies)
       })
-  }
-
-
-  const handleDeleteMovie = (id) => {
-    fetch(`${moviesUrl}/${id}`, {method: "DELETE"})
-      .then(() => {
-        const updatedMovies = movies.filter( movie => movie.id !== id )
-        setMovies(updatedMovies)
-      })
-      .catch(() => alert("Could not delete movie. Please try again."))
+      .catch((error) => alert(`Failed to update item. Please try again. ${error}`))
   }
 
   const handleChangeMovieComplete = (id, complete) => {
-    const configObj = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        complete: !complete
-      })
-    }
-    fetch(`${moviesUrl}/${id}`, configObj)
-      .then(resp => resp.json())
+    const updateObj = {complete: !complete}
+
+    Fetcher.patch(moviesUrl, id, updateObj)
       .then(data => {
         const updatedMovies = movies.map(movie => movie.id === id ? data : movie)
         setMovies(updatedMovies)
       })
+  }
+
+  const handleDeleteMovie = (id) => {
+    Fetcher.delete(moviesUrl, id)
+      .then(() => {
+        const updatedMovies = movies.filter( movie => movie.id !== id )
+        setMovies(updatedMovies)
+      })
+      .catch((error) => alert(`Could not delete. Please try again. ${error}`))
   }
 
   const handleChangeFilter = (event) => setFilter(event.target.value)
@@ -151,6 +127,7 @@ const MoviesPage = () => {
         <Sort
           sort={sort}
           onChangeSort={handleChangeSort}
+          options={sortOptions}
         />
         <MoviesList
           movies={sortedFilteredMovies()}

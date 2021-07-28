@@ -4,8 +4,9 @@ import { Route, Switch } from 'react-router'
 import '../App.css'
 
 import Home from "./Home"
-import MoviesPage from './MoviesPage'
 import NavBar from './NavBar'
+
+import MoviesPage from './movies/MoviesPage'
 
 function App() {
   useEffect(() => {
