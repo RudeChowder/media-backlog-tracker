@@ -1,15 +1,8 @@
 import React from "react"
 
-const Filter = ({ filter, onChangeFilter, completedToggle, onChangeCompletedToggle }) => {
+const Filter = ({ filter, onChangeFilter }) => {
   return(
-    <div className="filter" >
-      <label htmlFor="completed-toggle">View Finished Movies:</label>
-      <input 
-        type="checkbox"
-        value={completedToggle}
-        onChange={onChangeCompletedToggle}
-      />
-      <br />
+    <span className="filter" >
       <label htmlFor="filter">Filter: </label>
       <input 
         type="text"
@@ -18,7 +11,7 @@ const Filter = ({ filter, onChangeFilter, completedToggle, onChangeCompletedTogg
         value={filter}
         onChange={onChangeFilter}
       />
-    </div>
+    </span>
   )
 }
 

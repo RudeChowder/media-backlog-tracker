@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Route, Switch, useRouteMatch } from "react-router-dom"
 
+import CompletedToggle from "./CompletedToggle"
 import EditMovieForm from "./EditMovieForm"
 import Filter from "./Filter"
 import MoviesList from "./MoviesList"
@@ -8,7 +9,7 @@ import NewMovieForm from "./NewMovieForm"
 import Sort from "./Sort"
 
 const MoviesPage = () => {
-  const [completedToggle, setCompletedToggle] = useState(false)
+  const [viewCompleted, setViewCompleted] = useState(false)
   const [filter,setFilter] = useState("")
   const [movies, setMovies] = useState([])
   // const [rankings, setRankings] = useState([1,2,4,5,9])
@@ -111,10 +112,10 @@ const MoviesPage = () => {
 
   const handleChangeFilter = (event) => setFilter(event.target.value)
   const handleChangeSort = (event) => setSort(event.target.value)
-  const handleChangeCompletedToggle = () => setCompletedToggle(completedToggle => !completedToggle)
+  const handleChangeViewCompleted = (value) => setViewCompleted(value)
 
   const filteredMovies = movies
-    .filter(movie => movie.complete === completedToggle)
+    .filter(movie => movie.complete === viewCompleted)
     .filter(movie => filter === "" ? true : movie.title.toLowerCase().includes(filter.toLowerCase()))
 
   // const filteredRankings = () => {
@@ -139,13 +140,18 @@ const MoviesPage = () => {
   return (
     <Switch>
       <Route exact path={`${match.url}`} >
+        <CompletedToggle
+          viewCompleted={viewCompleted}
+          onChangeViewCompleted={handleChangeViewCompleted} 
+        />
         <Filter
           filter={filter}
-          onChangeFilter={handleChangeFilter}
-          completedToggle={completedToggle} 
-          onChangeCompletedToggle={handleChangeCompletedToggle}  
+          onChangeFilter={handleChangeFilter} 
         />
-        <Sort sort={sort} onChangeSort={handleChangeSort} />
+        <Sort
+          sort={sort}
+          onChangeSort={handleChangeSort}
+        />
         <MoviesList
           movies={sortedFilteredMovies()}
           onDeleteMovie={handleDeleteMovie}

@@ -45,7 +45,7 @@ const MovieForm = ({ formData, onChangeInput, onSubmitMovieForm }) => {
         </span>
         <span>
           <button type="submit" className="submit-button" >Submit</button>
-          <button className="cancel-button" onClick={handleClickCancel}>Cancel</button>
+          <button type="button" className="cancel-button" onClick={handleClickCancel}>Cancel</button>
         </span>
       </form>
   )

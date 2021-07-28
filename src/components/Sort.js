@@ -2,7 +2,7 @@ import React from "react"
 
 const Sort = ({ sort, onChangeSort }) => {
   return (
-    <div className="sort">
+    <span className="sort">
       <label htmlFor="sort">Sort by: </label>
       <select name="sort" onChange={onChangeSort} value={sort}>
         <option value=""></option>
@@ -11,7 +11,7 @@ const Sort = ({ sort, onChangeSort }) => {
         <option value="year">Year</option>
         <option value="runtime">Runtime</option>
       </select>
-    </div>
+    </span>
   )
 }
 
