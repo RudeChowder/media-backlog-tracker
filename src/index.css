@@ -111,10 +111,33 @@ nav a.active {
   background-color: rgb(184, 184, 184);
 }
 
+.refresh-button {
+  margin-top: 30px;
+  font-size: 2em;
+  color: blue;
+  cursor: pointer;
+}
+
 .submit-button {
   margin: 8px 4px 0 0 ;
   width: 100px;
   align-self: center;
+}
+
+.suggestion-container {
+  display: inline-block;
+}
+
+.suggestion-icon {
+  font-size: 2em;
+}
+
+.suggestion-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  border: black 1px solid;
 }
 
 .toggle-container {
