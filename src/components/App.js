@@ -13,8 +13,9 @@ import MoviesPage from "./movies/MoviesPage"
 const App = () => {
   const [games, setGames] = useState([])
   const [movies, setMovies] = useState([])
-  const gamesUrl = "http://localhost:3001/games"
-  const moviesUrl = "http://localhost:3001/movies"
+  const gamesUrl = `${process.env.REACT_APP_API_URL}/games`
+  const moviesUrl = `${process.env.REACT_APP_API_URL}/movies`
+  // https://media-backlog-tracker-backend.herokuapp.com/
 
   useEffect(() => {
     document.title = "Backlog Tracker"
@@ -135,7 +136,6 @@ const App = () => {
   }
 
   return (
-    // debugger
     <div className="App">
       <NavBar />
       <Switch>
