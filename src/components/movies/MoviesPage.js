@@ -54,6 +54,7 @@ const MoviesPage = ({ movies, onDeleteMovie, onChangeMovieComplete, onSubmitNewM
           options={sortOptions}
         />
         <ItemsList
+          dataFields={sortOptions}
           items={sortedFilteredMovies()}
           itemType="Movie"
           onDeleteItem={onDeleteMovie}

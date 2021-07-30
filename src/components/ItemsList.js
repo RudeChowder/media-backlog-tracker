@@ -3,22 +3,8 @@ import { Link } from "react-router-dom"
 
 import ItemCard from "./ItemCard"
 
-const ItemsList = ({ items, itemType, onDeleteItem, onChangeItemComplete }) => {
-  const generateHeaderElements = () => {
-    const headerElements = []
-    for (const key in items[0]) {
-      switch (key) {
-        case "id":
-        case "title":
-        case "complete":
-          break
-        default:
-          headerElements.push(<p key={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</p>)
-          break
-      }
-    }
-    return headerElements
-  }
+const ItemsList = ({ items, itemType, onDeleteItem, onChangeItemComplete, dataFields }) => {
+  const generateHeaderElements = () => dataFields.map(field => <p key={field}>{field}</p>)
 
   const itemCards = items.map(item => {
     return (
@@ -38,7 +24,6 @@ const ItemsList = ({ items, itemType, onDeleteItem, onChangeItemComplete }) => {
         Add New {itemType}
       </Link>
       <div className="item-list-header">
-        <p>Title</p>
         {generateHeaderElements()}
         <p>Complete</p>
       </div>

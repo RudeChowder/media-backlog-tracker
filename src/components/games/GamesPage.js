@@ -54,6 +54,7 @@ const GamesPage = ({ games, onDeleteGame, onChangeGameComplete, onSubmitNewGameF
           options={sortOptions}
         />
         <ItemsList
+          dataFields={sortOptions}
           items={sortedFilteredGames()}
           itemType="Game"
           onDeleteItem={onDeleteGame}
