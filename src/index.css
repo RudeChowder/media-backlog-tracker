@@ -43,6 +43,8 @@ a {
 
 .home {
   background-image: url("./assets/libDesat.jpg");
+  background-repeat: no-repeat;
+  background-position: center; 
   min-height: 600px;
 }
 
