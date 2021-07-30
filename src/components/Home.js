@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBook, faFilm, faGamepad, faSync } from "@fortawesome/free-solid-svg-icons"
 
-const Home = ({ movies, games }) => {
+const Home = ({ movies, games, books }) => {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
     generateSuggestions()
-  }, [movies, games])
+  }, [movies, games, books])
 
   const generateSuggestions = () => {
     const updatedSuggestions = []
@@ -18,6 +18,10 @@ const Home = ({ movies, games }) => {
     if (games.length > 0) {
       const randomIndex = Math.floor(Math.random() * games.length)
       updatedSuggestions.push({ game: games[randomIndex] })
+    }
+    if (books.length > 0) {
+      const randomIndex = Math.floor(Math.random() * books.length)
+      updatedSuggestions.push({ book: books[randomIndex] })
     }
     setSuggestions(updatedSuggestions)
   }

@@ -7,24 +7,32 @@ import Fetcher from "./Fetcher"
 import Home from "./Home"
 import NavBar from "./NavBar"
 
+import BooksPage from "./books/BooksPage"
 import GamesPage from "./games/GamesPage"
 import MoviesPage from "./movies/MoviesPage"
 
 const App = () => {
+  const [books, setBooks] = useState([])
   const [games, setGames] = useState([])
   const [movies, setMovies] = useState([])
+  const booksUrl = `${process.env.REACT_APP_API_URL}/books`
   const gamesUrl = `${process.env.REACT_APP_API_URL}/games`
   const moviesUrl = `${process.env.REACT_APP_API_URL}/movies`
-  // https://media-backlog-tracker-backend.herokuapp.com/
 
   useEffect(() => {
     document.title = "Backlog Tracker"
+
+    Fetcher.get(booksUrl)
+      .then(data => {
+        setBooks(data)
+      })
+      .catch((error) => alert(`Could not fetch books. Please try again. ${error}`))
 
     Fetcher.get(gamesUrl)
       .then(data => {
         setGames(data)
       })
-      .catch((error) => alert(`Could not fetch Games. Please try again. ${error}`))
+      .catch((error) => alert(`Could not fetch games. Please try again. ${error}`))
 
     Fetcher.get(moviesUrl)
       .then(data => {
@@ -135,6 +143,57 @@ const App = () => {
       .catch((error) => alert(`Could not delete. Please try again. ${error}`))
   }
 
+  const handleSubmitNewBookForm = (newBook) => {
+    const { title, genre, year, author } = newBook
+    const newRecordInfo = {
+      title: title,
+      genre: genre,
+      year: parseInt(year),
+      author: author,
+      complete: false
+    }
+
+    Fetcher.post(booksUrl, newRecordInfo)
+      .then(data => setBooks([...books, data]))
+      .catch((error) => alert(`Ran into an error while trying to save. Please try again. ${error}`))
+  }
+
+  const handleSubmitEditBookForm = (id, bookInfo) => {
+    const { title, genre, year, author } = bookInfo
+    const updateObj = {
+      title: title,
+      genre: genre,
+      year: parseInt(year),
+      author: author
+    }
+
+    Fetcher.patch(booksUrl, id, updateObj)
+      .then(data => {
+        const updatedBooks = books.map(book => book.id === parseInt(id) ? data : book)
+        setBooks(updatedBooks)
+      })
+      .catch((error) => alert(`Failed to update item. Please try again. ${error}`))
+  }
+
+  const handleChangeBookComplete = (id, complete) => {
+    const updateObj = { complete: !complete }
+
+    Fetcher.patch(booksUrl, id, updateObj)
+      .then(data => {
+        const updatedBooks = books.map(book => book.id === id ? data : book)
+        setBooks(updatedBooks)
+      })
+  }
+
+  const handleDeleteBook = (id) => {
+    Fetcher.delete(booksUrl, id)
+      .then(() => {
+        const updatedBooks = books.filter(book => book.id !== id)
+        setBooks(updatedBooks)
+      })
+      .catch((error) => alert(`Could not delete. Please try again. ${error}`))
+  }
+
   return (
     <div className="App">
       <NavBar />
@@ -143,6 +202,7 @@ const App = () => {
           <Home
             movies={movies.filter(movie => !movie.complete)}
             games={games.filter(game => !game.complete)}
+            books={books.filter(book => !book.complete)}
           />
         </Route>
         <Route path="/movies">
@@ -164,7 +224,13 @@ const App = () => {
           />
         </Route>
         <Route path="/books">
-          <p>Hello from the books page</p>
+        <BooksPage
+            books={books}
+            onSubmitNewBookForm={handleSubmitNewBookForm}
+            onSubmitEditBookForm={handleSubmitEditBookForm}
+            onChangeBookComplete={handleChangeBookComplete}
+            onDeleteBook={handleDeleteBook}
+          />
         </Route>
       </Switch>
     </div>

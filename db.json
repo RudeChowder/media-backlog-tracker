@@ -138,5 +138,55 @@
       "complete": true,
       "id": 7
     }
+  ],
+  "books": [
+    {
+      "title": "Duma Key",
+      "genre": "Horror",
+      "year": 2008,
+      "author": "Stephen King",
+      "complete": false,
+      "id": 1
+    },
+    {
+      "title": "Slaughterhouse-Five",
+      "genre": "Sci-fi",
+      "year": 1969,
+      "author": "Kurt Vonnegut",
+      "complete": false,
+      "id": 2
+    },
+    {
+      "title": "Dune",
+      "genre": "Sci-fi",
+      "year": 1965,
+      "author": "Frank Herbert",
+      "complete": true,
+      "id": 3
+    },
+    {
+      "title": "The First Fifteen Lives of Harry August",
+      "genre": "Sci-fi/Fantasy",
+      "year": 2014,
+      "author": "Claire North",
+      "complete": false,
+      "id": 4
+    },
+    {
+      "title": "Neuromancer",
+      "genre": "Cyberpunk",
+      "year": 1984,
+      "author": "William Gibson",
+      "complete": true,
+      "id": 5
+    },
+    {
+      "title": "The Black Prism",
+      "genre": "Fantasy",
+      "year": 2010,
+      "author": "Brent Weeks",
+      "complete": false,
+      "id": 6
+    }
   ]
 }
