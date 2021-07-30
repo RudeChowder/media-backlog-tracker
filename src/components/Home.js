@@ -49,7 +49,7 @@ const Home = ({ movies, games }) => {
 
   const determineContent = () => {
     if (suggestions.length === 0) {
-      return <h3>Looks like you have no unfinished media items!</h3>
+      return <h3 className="suggestion-container">Looks like you have no unfinished media items!</h3>
     } else {
       return (
         <div className="suggestion-container">
@@ -62,9 +62,11 @@ const Home = ({ movies, games }) => {
   }
 
   return (
-    <main>
-      <h3>Welcome!</h3>
+    <main className="home">
+      <h2 className="suggestion-container">Welcome!</h2>
+      <br />
       {determineContent()}
+      <br></br>
     </main>
   )
 }

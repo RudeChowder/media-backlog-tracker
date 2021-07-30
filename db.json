@@ -55,6 +55,30 @@
       "runtime": 109,
       "complete": false,
       "id": 7
+    },
+    {
+      "title": "Troll 2",
+      "genre": "Horror/Comedy",
+      "year": 1990,
+      "runtime": 95,
+      "complete": false,
+      "id": 8
+    },
+    {
+      "title": "A Face in the Crowd",
+      "genre": "Drama",
+      "year": 1957,
+      "runtime": 126,
+      "complete": true,
+      "id": 9
+    },
+    {
+      "title": "Fargo",
+      "genre": "Crime",
+      "year": 1996,
+      "runtime": 98,
+      "complete": false,
+      "id": 10
     }
   ],
   "games": [
@@ -81,6 +105,38 @@
       "platform": "PS4",
       "complete": false,
       "id": 3
+    },
+    {
+      "title": "Subnautica: Below Zero",
+      "genre": "Survival",
+      "year": 2021,
+      "platform": "PC",
+      "complete": false,
+      "id": 4
+    },
+    {
+      "title": "Paradise Killer",
+      "genre": "Investigation",
+      "year": 2020,
+      "platform": "PC",
+      "complete": false,
+      "id": 5
+    },
+    {
+      "title": "A Plague Tale: Innocence",
+      "genre": "Adventure",
+      "year": 2019,
+      "platform": "PC",
+      "complete": false,
+      "id": 6
+    },
+    {
+      "title": "Portal",
+      "genre": "Puzzle",
+      "year": 2007,
+      "platform": "PS3",
+      "complete": true,
+      "id": 7
     }
   ]
 }
