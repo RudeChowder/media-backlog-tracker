@@ -7,7 +7,7 @@ const Home = ({ movies, games }) => {
 
   useEffect(() => {
     generateSuggestions()
-  }, [])
+  }, [movies, games])
 
   const generateSuggestions = () => {
     const updatedSuggestions = []
