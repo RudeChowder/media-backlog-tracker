@@ -5,6 +5,7 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
 
 const ItemCard = ({ item, itemType, onDeleteItem, onChangeItemComplete }) => {
   const { id, title, complete } = item
+
   const generateItemCardElements = () => {
     const itemElements = []
     for (const key in item) {
